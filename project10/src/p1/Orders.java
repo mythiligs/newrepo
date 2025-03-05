@@ -105,53 +105,13 @@ class Neworders{
 
 }
 public class Orders {
-	public static void question3(List<Neworders>ob)
-	{
-		Optional<Neworders>res=
-				ob.stream()
-				.sorted(Comparator.comparing(Neworders::getPrice).reversed())
-				.findFirst();
-		Neworders rem=res.get();
-		System.out.println(rem.getName()+" "+"is the highest price order with price: "+" "+rem.getPrice());
-		System.out.println(rem.getId()+" "+rem.getName()+" "+rem.getPrice()+" "+rem.getMonth()+" "+rem.getYear()+" "+rem.getCity()+" "+rem.getCategory()+" "+rem.getQuantity());
-		System.out.println(" ");
-	}
-
-	public static void question5(List<Neworders>ob)
-	{
-		Optional<Neworders>res=ob.stream()
-				.sorted(Comparator.comparing(Neworders::getPrice))
-				.findFirst();
-		Neworders rem=res.get();
-		System.out.println(rem.getName()+" "+"is the lowest price order with price: "+" "+rem.getPrice());
-		System.out.println(rem.getId()+" "+rem.getName()+" "+rem.getPrice()+" "+rem.getMonth()+" "+rem.getYear()+" "+rem.getCity()+" "+rem.getCategory()+" "+rem.getQuantity());
-		System.out.println(" ");
-	}
-	public static void question6(List<Neworders>ob)
-	{
-		Optional<Neworders>res=ob.stream()
-				.sorted(Comparator.comparing(Neworders::getId))
-				.findFirst();
-		Neworders rem=res.get();
-		System.out.println("The first order with ID:"+" "+rem.getId());
-		System.out.println("The first order with Name:"+" "+rem.getName());
-		System.out.println(" ");
-	}
-	public static void question4(List<Neworders>ob)
-	{
-		Map<String,Double>rem=ob.stream()
-				.collect(Collectors.groupingBy(Neworders::getCategory,Collectors.averagingDouble(nm->nm.getPrice()*nm.getQuantity())));
-		System.out.println("Average of each category");
-		System.out.println(rem);
-		System.out.println(" ");
-	}
 	public static void question1(List<Neworders>ob)
 	{
 		Optional<Neworders>rem=ob.stream()
 				.max(Comparator.comparing(nm->nm.getPrice()*nm.getQuantity()));
 		Neworders res=rem.get();
 		System.out.println("Name:"+" "+res.getName());
-		System.out.println(" ");
+		System.out.println("..................................................................");
 	}
 	public static void question2(List<Neworders>ob)
 	{
@@ -166,6 +126,47 @@ public class Orders {
 				System.out.println(dt);
 			}
 		}
+		System.out.println("..................................................................");
+	}
+	public static void question3(List<Neworders>ob)
+	{
+		Optional<Neworders>res=
+				ob.stream()
+				.sorted(Comparator.comparing(Neworders::getPrice).reversed())
+				.findFirst();
+		Neworders rem=res.get();
+		System.out.println(rem.getName()+" "+"is the highest price order with price: "+" "+rem.getPrice());
+		System.out.println(rem.getId()+" "+rem.getName()+" "+rem.getPrice()+" "+rem.getMonth()+" "+rem.getYear()+" "+rem.getCity()+" "+rem.getCategory()+" "+rem.getQuantity());
+		System.out.println("..................................................................");
+	}
+	public static void question4(List<Neworders>ob)
+	{
+		Map<String,Double>rem=ob.stream()
+				.collect(Collectors.groupingBy(Neworders::getCategory,Collectors.averagingDouble(nm->nm.getPrice()*nm.getQuantity())));
+		System.out.println("Average of each category");
+		System.out.println(rem);
+		System.out.println("..................................................................");
+	}
+
+	public static void question5(List<Neworders>ob)
+	{
+		Optional<Neworders>res=ob.stream()
+				.sorted(Comparator.comparing(Neworders::getPrice))
+				.findFirst();
+		Neworders rem=res.get();
+		System.out.println(rem.getName()+" "+"is the lowest price order with price: "+" "+rem.getPrice());
+		System.out.println(rem.getId()+" "+rem.getName()+" "+rem.getPrice()+" "+rem.getMonth()+" "+rem.getYear()+" "+rem.getCity()+" "+rem.getCategory()+" "+rem.getQuantity());
+		System.out.println("..................................................................");
+	}
+	public static void question6(List<Neworders>ob)
+	{
+		Optional<Neworders>res=ob.stream()
+				.sorted(Comparator.comparing(Neworders::getId))
+				.findFirst();
+		Neworders rem=res.get();
+		System.out.println("The first order with ID:"+" "+rem.getId());
+		System.out.println("The first order with Name:"+" "+rem.getName());
+		System.out.println(" ");
 	}
 	public static void main(String[] args) {
 		List<Neworders>li=new ArrayList<>();
@@ -179,13 +180,12 @@ public class Orders {
 		li.add(new Neworders(122,"brinjal",80.00,"feb",2024,"UP","vege",2));
 		li.add(new Neworders(176,"melon",20.00,"nov",2022,"AP","fruits",81));
 		li.add(new Neworders(192,"raspberry",790.00,"dec",2026,"ooty","fruits",36));
-		Orders.question3(li);
-		Orders.question5(li);
-		Orders.question6(li);
-		Orders.question4(li);
 		Orders.question1(li);
 		Orders.question2(li);
-
+		Orders.question3(li);
+		Orders.question4(li);
+		Orders.question5(li);
+		Orders.question6(li);
 	}
 }
 
